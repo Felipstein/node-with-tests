@@ -6,8 +6,6 @@ export interface CreateLessonData {
 
 export interface ILessonsRepository {
 
-  findAll(): Promise<Lesson[]>;
-
   create(data: CreateLessonData): Promise<void>;
 
 }

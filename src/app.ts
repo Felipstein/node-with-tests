@@ -3,12 +3,15 @@ import 'express-async-errors';
 import 'dotenv/config';
 
 import { UseCasesError } from './errors/UseCasesError';
-import { route } from './routes/user.routes';
+
+import { route as userRoutes } from './routes/user.routes';
+import { route as lessonRoutes } from './routes/user.routes';
 
 const app = express();
 
 app.use(express.json());
-app.use(route);
+app.use(userRoutes);
+app.use(lessonRoutes);
 
 app.use(
   (err: UseCasesError | Error, req: Request, res: Response, next: NextFunction) => {
