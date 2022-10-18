@@ -36,14 +36,9 @@ export class CreateUserUseCases {
     const encryptedPassword = await hash(password, 8);
 
     const userCreate = new User({ name, username, email, password: encryptedPassword });
-    const user = await prisma.user.create({
-      data: userCreate,
-    });
+    const user = await this.usersRepository.create(userCreate);
 
-    return {
-      ...user,
-      username: user.username ?? undefined,
-    };
+    return user;
   }
 
 }
